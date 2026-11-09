@@ -9,6 +9,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useRef } from "react";
 import { useEffect } from "react";
 import Image from "next/image";
+import { RoleHeaderScroll} from "@/components/nameHeader";
 
 interface props {
   xStart?: number;
@@ -92,10 +93,10 @@ function TextScrollTrigger({
         ease: "power1.out",
         scrollTrigger: {
           trigger: ElementRef.current,
-          start: "top 30%",
+          start: "top 10%",
           end: "bottom 0%",
           scrub: 1.2,
-          //   markers: true,
+          // markers: true,
         },
       });
     }, ElementRef);
@@ -111,38 +112,53 @@ function TextScrollTrigger({
 }
 
 function SlideTransition() {
-  const ElementRef = useRef<HTMLHeadingElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const blueRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!ElementRef.current) return;
+    if (!wrapperRef.current || !blueRef.current) return;
 
     const ctx = gsap.context(() => {
-      gsap.set(ElementRef.current, {
-        y: 0,
-        x: -5000,
-      });
+      gsap.set(blueRef.current, { xPercent: -100, height: "50vh" });
 
-      gsap.to(ElementRef.current, {
-        y: 0,
-        x: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power1.out",
+      const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: ElementRef.current,
-          start: "top 30%",
+          trigger: wrapperRef.current,
+          start: "top 20%",
           end: "bottom 10%",
-          scrub: 1.2,
-          markers: true,
+          scrub: 1.2,   
+          // markers: true,
         },
       });
-    }, ElementRef);
+
+      tl
+        .to(blueRef.current, {
+          height: "100vh",
+          duration: 1,
+          ease: "power1.out",
+        })
+        .to(blueRef.current, {
+          xPercent: 0,
+          duration: 1,
+          ease: "power1.out",
+        });
+    }, wrapperRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <div ref={ElementRef} className="bg-blue-400 absolute w-[150%] h-screen">
+    <div ref={wrapperRef} className="relative w-full h-screen">
+      <div
+        ref={blueRef}
+        className="absolute bottom-0 left-0 bg-blue-400 w-full"
+      >
+        <div className="w-full h-2/3" />
+        <div className="w-full h-1/2">
+          <RoleHeaderScroll text={"FULL"} yEnd={-600} />
+          <RoleHeaderScroll text={"STACK"} yEnd={-200} />
+        </div>
+      </div>
     </div>
   );
 }

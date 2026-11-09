@@ -7,7 +7,12 @@ import ScrambleText from "@/components/scrambleText";
 import { TextScrollTrigger } from "@/components/ScrollTrigger";
 import { useEffect, useRef } from "react";
 
-function RoleHeaderScroll() {
+interface props{
+  text?: string,
+  yEnd?: number
+}
+
+function RoleHeaderScroll({text, yEnd}:props) {
   const ElementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -15,21 +20,22 @@ function RoleHeaderScroll() {
 
     const ctx = gsap.context(() => {
       gsap.set(ElementRef.current, {
-        y: 0,
+        y: yEnd,
         x: -5000,
       });
 
       gsap.to(ElementRef.current, {
-        y: 0,
-        x: 1600,
+        y: yEnd,
+        x: 0,
         duration: 1,
+        position: "absolute",
         ease: "power1.out",
         scrollTrigger: {
           trigger: ElementRef.current,
           start: "top 46%",
           end: "bottom 0%",
           scrub: 1.5,
-        //   markers: true,
+          // markers: true,
         },
       });
     }, ElementRef);
@@ -39,8 +45,8 @@ function RoleHeaderScroll() {
 
   return (
     <div ref={ElementRef} className="w-full flex items-center">
-      <h1 className="text-[40rem] font-bold text-slate-100 w-full">
-        FULLSTACK
+      <h1 className="text-[26rem] font-bold text-white w-full">
+        {text}
       </h1>
     </div>
   );
@@ -94,9 +100,6 @@ function NameHeaderScroll() {
           xStart={0}
           xEnd={360}
         />
-        <div className="w-[4000] h-screen absolute">
-          <RoleHeaderScroll />
-        </div>
       </div>
     </div>
   );

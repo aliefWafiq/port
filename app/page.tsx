@@ -4,7 +4,7 @@ import {
   LogoScrollTrigger,
   SlideTransition
 } from "@/components/ScrollTrigger";
-import { NameHeaderScroll, RoleHeaderScroll } from "@/components/nameHeader";
+import { NameHeaderScroll} from "@/components/nameHeader";
 
 export default function Home() {
   return (
