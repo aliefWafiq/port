@@ -46,7 +46,7 @@ function LogoScrollTrigger({ xStart, yStart, xEnd, yEnd, src }: props) {
           start: "top 80%",
           end: "bottom 40%",
           scrub: true,
-        //   markers: true,
+          // markers: true,
         },
       });
     }, elementRef);
@@ -64,7 +64,14 @@ function LogoScrollTrigger({ xStart, yStart, xEnd, yEnd, src }: props) {
   );
 }
 
-function TextScrollTrigger({ xStart, yStart, xEnd, yEnd, className, text }: props) {
+function TextScrollTrigger({
+  xStart,
+  yStart,
+  xEnd,
+  yEnd,
+  className,
+  text,
+}: props) {
   const ElementRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
@@ -88,7 +95,7 @@ function TextScrollTrigger({ xStart, yStart, xEnd, yEnd, className, text }: prop
           start: "top 30%",
           end: "bottom 0%",
           scrub: 1.2,
-        //   markers: true,
+          //   markers: true,
         },
       });
     }, ElementRef);
@@ -103,4 +110,41 @@ function TextScrollTrigger({ xStart, yStart, xEnd, yEnd, className, text }: prop
   );
 }
 
-export { LogoScrollTrigger, TextScrollTrigger };
+function SlideTransition() {
+  const ElementRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    if (!ElementRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.set(ElementRef.current, {
+        y: 0,
+        x: -5000,
+      });
+
+      gsap.to(ElementRef.current, {
+        y: 0,
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power1.out",
+        scrollTrigger: {
+          trigger: ElementRef.current,
+          start: "top 30%",
+          end: "bottom 10%",
+          scrub: 1.2,
+          markers: true,
+        },
+      });
+    }, ElementRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <div ref={ElementRef} className="bg-blue-400 absolute w-[150%] h-screen">
+    </div>
+  );
+}
+
+export { LogoScrollTrigger, TextScrollTrigger, SlideTransition };

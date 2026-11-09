@@ -21,7 +21,7 @@ function RoleHeaderScroll() {
 
       gsap.to(ElementRef.current, {
         y: 0,
-        x: 1400,
+        x: 1600,
         duration: 1,
         ease: "power1.out",
         scrollTrigger: {
@@ -66,10 +66,10 @@ function NameHeaderScroll() {
         scrollTrigger: {
           trigger: ElementRef.current,
           start: "top 30%",
-          end: "bottom 20%",
+          end: "+=2100",
           scrub: true,
           pin: true,
-        //   markers: true,
+          // markers: true,
         },
       });
     }, ElementRef);
@@ -78,23 +78,21 @@ function NameHeaderScroll() {
   }, []);
 
   return (
-    <div ref={ElementRef}>
+    <div ref={ElementRef} className="h-1/2">
       <ScrambleText
         text="ALIEF WAFIQ RAMADHAN"
         className="text-7xl font-bold text-center"
       />
       <div className="w-1/2 mt-6">
         <TextScrollTrigger
-          text="dengan passion membuat sistem website yang efisien dan user
-                friendly, antusias eksplorasi teknologi baru, fokus pada
-                pengembangan antarmuka modern dan responsif. You have power
+          text="You have power
                 over your mind, not outside events. Realize this, and you will
                 find strength, Marcus Aurelius (Meditations)"
           className="text-base md:text-lg md:text-center md:tracking-wide"
           yStart={0}
           yEnd={0}
           xStart={0}
-          xEnd={300}
+          xEnd={360}
         />
         <div className="w-[4000] h-screen absolute">
           <RoleHeaderScroll />

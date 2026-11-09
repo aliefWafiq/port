@@ -2,16 +2,33 @@ import Image from "next/image";
 import ScrambleText from "@/components/scrambleText";
 import {
   LogoScrollTrigger,
-  TextScrollTrigger,
+  SlideTransition
 } from "@/components/ScrollTrigger";
 import { NameHeaderScroll, RoleHeaderScroll } from "@/components/nameHeader";
 
 export default function Home() {
   return (
     <div className="w-full">
-      <main className="flex items-start justify-center w-full h-[150vh] rounded-lg px-16">
-        <div className="w-full h-1/2 flex flex-col justify-center">
+      <main className="flex items-start justify-center w-full h-[300vh] rounded-lg relative">
+        <div className="w-full h-screen sticky top-0 flex flex-col justify-center overflow-hidden">
+          <Image
+            alt="star"
+            src="/star.png"
+            width={600}
+            height={600}
+            className="absolute -top-40 -left-40 blur-sm rotate-6 h-auto max-w-none"
+          />
           <NameHeaderScroll />
+
+          <Image
+            alt="star"
+            src="/star.png"
+            width={600}
+            height={600}
+            className="absolute -bottom-40 -right-40 blur-sm rotate-12 h-auto max-w-none"
+          />
+
+          <SlideTransition />
         </div>
       </main>
 
@@ -178,7 +195,32 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full h-screen"></div>
+      {/* About Me */}
+      <div className="w-full h-screen flex gap-4 justify-center items-center">
+        <div className="border-2 border-gray-200 rounded-2xl p-4 w-1/4">
+          {/* <div className="w-full h-96 relative rounded-2xl overflow-hidden">
+            <Image 
+              alt="foto"
+              src="/foto.jpg"
+              fill
+            />
+          </div> */}
+          <p className="text-lg font-semibold my-4">Alief Wafiq Ramadhan</p>
+          <p className="text-justify">
+            Dunia teknologi itu luas dan juga selalu berkembang seiring waktu, setiap kali melihat inovasi baru dalam dunia teknologi
+            semakin membuat saya merasa ingin ikut belajar dan berkembang mengikuti perkembangan teknologi. Saya merupakan seorang web developer, tidak hanya web tetapi saya juga
+            memiliki keahlian di bidang IOT dan AI.
+          </p>
+        </div>
+        <div className="border-2 border-gray-200 rounded-2xl p-4 w-1/4">
+          <p className="text-lg font-semibold my-4">FYI</p>
+          <p className="text-justify">
+            Saya juga senang melakukan explorasi hal hal baru, menyelesaikan berbagai macam permasalahan dan mencari solusi yang efektif. Saya juga aktif dalam
+            mengikuti berbagai macam kegiatan dan mengambil berbagai macam kesempatan yang dapat meningkatkan pengetahuan dan pengalaman saya.
+          </p>
+        </div>
+      </div>
+      {/* About Me end*/}
     </div>
   );
 }
