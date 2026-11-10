@@ -32,7 +32,7 @@ export default function ScrambleText({ text, className }: ScrambleTextProps) {
     tl.set(elementRef.current, { opacity: 1 });
     tl.set(splitChars.chars, { opacity: 0 });
 
-    const randomChars = "!@#$%^&*-=+<>?/";
+    const randomChars = "!@#$%^&*-=+<>?/1234567890wasdxcvljpowieijlk";
     const staggerDelay = 0.035;
 
     splitChars.chars.forEach((char, index) => {

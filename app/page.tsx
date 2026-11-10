@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="w-full">
       <main className="flex items-start justify-center w-full h-[300vh] rounded-lg relative">
-        <div className="w-full h-screen sticky top-0 flex flex-col justify-center overflow-hidden">
+        <div className="w-full h-screen sticky top-0 flex flex-col justify-center items-center overflow-hidden">
           <Image
             alt="star"
             src="/star.png"

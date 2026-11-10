@@ -6,13 +6,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrambleText from "@/components/scrambleText";
 import { TextScrollTrigger } from "@/components/ScrollTrigger";
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
-interface props{
-  text?: string,
-  yEnd?: number
+interface props {
+  text?: string;
+  yEnd?: number;
 }
 
-function RoleHeaderScroll({text, yEnd}:props) {
+function RoleHeaderScroll({ text, yEnd }: props) {
   const ElementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -45,9 +46,7 @@ function RoleHeaderScroll({text, yEnd}:props) {
 
   return (
     <div ref={ElementRef} className="w-full flex items-center">
-      <h1 className="text-[26rem] font-bold text-white w-full">
-        {text}
-      </h1>
+      <h1 className="text-[26rem] font-bold text-white w-full">{text}</h1>
     </div>
   );
 }
@@ -71,8 +70,8 @@ function NameHeaderScroll() {
         ease: "power1.out",
         scrollTrigger: {
           trigger: ElementRef.current,
-          start: "top 30%",
-          end: "+=2100",
+          start: "top 10%",
+          end: "+=1500",
           scrub: true,
           pin: true,
           // markers: true,
@@ -84,12 +83,22 @@ function NameHeaderScroll() {
   }, []);
 
   return (
-    <div ref={ElementRef} className="h-1/2">
-      <ScrambleText
-        text="ALIEF WAFIQ RAMADHAN"
-        className="text-7xl font-bold text-center"
+    <div ref={ElementRef} className="h-screen absolute flex justify-center">
+      <Image 
+        alt="sign"
+        src="/sign.png"
+        width={600}
+        height={600}
       />
-      <div className="w-1/2 mt-6">
+      <ScrambleText
+        text="ALIEF WAFIQ"
+        className="text-6xl font-bold text-center absolute text-white left-20 top-35 -rotate-3"
+      />
+      <ScrambleText
+        text="RAMADHAN"
+        className="text-6xl font-bold text-center absolute text-white top-96 rotate-6"
+      />
+      {/* <div className="w-1/2 mt-6">
         <TextScrollTrigger
           text="You have power
                 over your mind, not outside events. Realize this, and you will
@@ -100,7 +109,7 @@ function NameHeaderScroll() {
           xStart={0}
           xEnd={360}
         />
-      </div>
+      </div>  */}
     </div>
   );
 }
