@@ -5,13 +5,16 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrambleText from "@/components/scrambleText";
 import { TextScrollTrigger } from "@/components/ScrollTrigger";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 interface props {
   text?: string;
   yEnd?: number;
 }
+
+const firstNameList = ["ALIEF WAFIQ", "IM A TECH", "EXPLORE"]
+const secondNameList = ["RAMADHAN", "ENTHUSIAST", "NEW TECH"]
 
 function RoleHeaderScroll({ text, yEnd }: props) {
   const ElementRef = useRef<HTMLDivElement>(null);
@@ -53,6 +56,14 @@ function RoleHeaderScroll({ text, yEnd }: props) {
 
 function NameHeaderScroll() {
   const ElementRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % secondNameList.length )
+    }, 3000);
+    return () => clearInterval(interval)
+  }, [])
 
   useEffect(() => {
     if (!ElementRef.current) return;
@@ -91,12 +102,14 @@ function NameHeaderScroll() {
         height={600}
       />
       <ScrambleText
-        text="ALIEF WAFIQ"
-        className="text-6xl font-bold text-center absolute text-white left-20 top-35 -rotate-3"
+        key={`first-${currentIndex}`}
+        text={firstNameList[currentIndex]}
+        className="text-6xl font-bold text-center absolute text-slate-100 left-20 top-35 -rotate-3"
       />
       <ScrambleText
-        text="RAMADHAN"
-        className="text-6xl font-bold text-center absolute text-white top-96 rotate-6"
+        key={`second-${currentIndex}`}
+        text={secondNameList[currentIndex]}
+        className="text-6xl font-bold text-center absolute text-slate-100 top-96 rotate-6 w-3/4"
       />
       {/* <div className="w-1/2 mt-6">
         <TextScrollTrigger
