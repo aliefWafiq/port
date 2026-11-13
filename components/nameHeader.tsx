@@ -13,8 +13,8 @@ interface props {
   yEnd?: number;
 }
 
-const firstNameList = ["ALIEF WAFIQ", "IM A TECH", "EXPLORE"]
-const secondNameList = ["RAMADHAN", "ENTHUSIAST", "NEW TECH"]
+const firstNameList = ["ALIEF WAFIQ", "IM A TECH", "BUILD REAL"]
+const secondNameList = ["RAMADHAN", "ENTHUSIAST", "PROJECTS"]
 
 function RoleHeaderScroll({ text, yEnd }: props) {
   const ElementRef = useRef<HTMLDivElement>(null);

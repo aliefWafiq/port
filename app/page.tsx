@@ -1,10 +1,8 @@
 import Image from "next/image";
 import ScrambleText from "@/components/scrambleText";
-import {
-  LogoScrollTrigger,
-  SlideTransition
-} from "@/components/ScrollTrigger";
-import { NameHeaderScroll} from "@/components/nameHeader";
+import { LogoScrollTrigger, SlideTransition } from "@/components/ScrollTrigger";
+import { NameHeaderScroll } from "@/components/nameHeader";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -32,7 +30,7 @@ export default function Home() {
         </div>
       </main>
 
-      <div className="w-full h-screen flex justify-around px-6">
+      {/* <div className="w-full h-screen flex justify-around px-6">
         <div>
           <LogoScrollTrigger
             src={"/languages/html-5-svgrepo-com.svg"}
@@ -193,34 +191,81 @@ export default function Home() {
             xEnd={55}
           />
         </div>
-      </div>
+      </div> */}
 
-      {/* About Me */}
-      <div className="w-full h-screen flex gap-4 justify-center items-center">
-        <div className="border-2 border-gray-200 rounded-2xl p-4 w-1/4">
-          {/* <div className="w-full h-96 relative rounded-2xl overflow-hidden">
-            <Image 
-              alt="foto"
-              src="/foto.jpg"
-              fill
-            />
-          </div> */}
-          <p className="text-lg font-semibold my-4">Alief Wafiq Ramadhan</p>
-          <p className="text-justify">
-            Dunia teknologi itu luas dan juga selalu berkembang seiring waktu, setiap kali melihat inovasi baru dalam dunia teknologi
-            semakin membuat saya merasa ingin ikut belajar dan berkembang mengikuti perkembangan teknologi. Saya merupakan seorang web developer, tidak hanya web tetapi saya juga
-            memiliki keahlian di bidang IOT dan AI.
-          </p>
+      <div className="w-full h-screen flex justify-center items-center p-24 gap-4">
+        <div className="w-2/5 shadow-xl rounded-2xl border-2 border-slate-200 overflow-hidden">
+          <div className="p-4">Python</div>
+          <div className="w-full h-96 bg-red-200 relative">
+            <Image src={"/projects/anything.png"} fill alt="anything" />
+          </div>
+          <div className="w-full p-6">
+            <p className="text-4xl font-semibold my-4">Anything Tools</p>
+            <p className="text-justify mb-4">
+              A versatile Command Line Interface (CLI) application built with
+              Python. This project bundles several handy utilities into a
+              single, easy-to-use tool to help streamline your daily tasks.
+            </p>
+            {/* <div className="mb-12 w-fit border-2 border-green-600 rounded-2xl py-1 px-4">
+              <p>Python</p>
+            </div>
+            <Link
+              href={"https://github.com/aliefWafiq/Anything-Tools.git"}
+              className="bg-blue-400 text-white p-4 rounded-lg"
+            >
+              View Project
+            </Link> */}
+          </div>
         </div>
-        <div className="border-2 border-gray-200 rounded-2xl p-4 w-1/4">
-          <p className="text-lg font-semibold my-4">FYI</p>
-          <p className="text-justify">
-            Saya juga senang melakukan explorasi hal hal baru, menyelesaikan berbagai macam permasalahan dan mencari solusi yang efektif. Saya juga aktif dalam
-            mengikuti berbagai macam kegiatan dan mengambil berbagai macam kesempatan yang dapat meningkatkan pengetahuan dan pengalaman saya.
-          </p>
+
+        <div className="w-2/5 shadow-xl rounded-2xl border-2 border-slate-200 overflow-hidden">
+          <div className="p-4">Python</div>
+          <div className="w-full h-96 bg-red-200 relative">
+            <Image src={"/projects/anything.png"} fill alt="anything" />
+          </div>
+          <div className="w-full p-6">
+            <p className="text-4xl font-semibold my-4">Anything Tools</p>
+            <p className="text-justify mb-4">
+              A versatile Command Line Interface (CLI) application built with
+              Python. This project bundles several handy utilities into a
+              single, easy-to-use tool to help streamline your daily tasks.
+            </p>
+            {/* <div className="mb-12 w-fit border-2 border-green-600 rounded-2xl py-1 px-4">
+              <p>Python</p>
+            </div>
+            <Link
+              href={"https://github.com/aliefWafiq/Anything-Tools.git"}
+              className="bg-blue-400 text-white p-4 rounded-lg"
+            >
+              View Project
+            </Link> */}
+          </div>
+        </div>
+
+        <div className="w-2/5 shadow-xl rounded-2xl border-2 border-slate-200 overflow-hidden">
+          <div className="p-4">Python</div>
+          <div className="w-full h-96 bg-red-200 relative">
+            <Image src={"/projects/anything.png"} fill alt="anything" />
+          </div>
+          <div className="w-full p-6">
+            <p className="text-4xl font-semibold my-4">Anything Tools</p>
+            <p className="text-justify mb-4">
+              A versatile Command Line Interface (CLI) application built with
+              Python. This project bundles several handy utilities into a
+              single, easy-to-use tool to help streamline your daily tasks.
+            </p>
+            {/* <div className="mb-12 w-fit border-2 border-green-600 rounded-2xl py-1 px-4">
+              <p>Python</p>
+            </div>
+            <Link
+              href={"https://github.com/aliefWafiq/Anything-Tools.git"}
+              className="bg-blue-400 text-white p-4 rounded-lg"
+            >
+              View Project
+            </Link> */}
+          </div>
         </div>
       </div>
-      {/* About Me end*/}
     </div>
   );
 }
